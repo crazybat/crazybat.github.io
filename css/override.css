@@ -1,0 +1,274 @@
+/* =====
+override.css
+Purpose: To override the initial core.css styles.
+
+Dependancy: 
+- core.css (runs first)
+-- override.css (runs second)
+
+Author: Marco Battilana (marco.battilana@dfo-mpo.gc.ca) - Fisheries and Oceans Canada
+Twitter: @crazybat
+
+Revision History: 
+****
+Version 1.0
+(26 Oct 2018)
+- Brought in existing GCpedia functionality for pages. Uses same links, just styled and displayed different.
+
+Known Issues:
+- Incorporate additional GCpedia functionality: Language flipper, log in, etc. (PARTIALLY SOLVED! Still need to bring over remaining GCpedia items)
+-- Search GCpedia
+-- Categories
+-- Others???
+****
+
+References:
+GCpedicure: www.gcpedia.gc.ca/wiki/GCpedicure
+Bootstrap:	getbootstrap.com
+ */
+ 
+/* ==== To override the initial override from core.css. DO NOT REMOVE ==== */
+
+/* === GCpedia Head content (Personal, GCpedia Tools) === */
+div#mw-head {
+  position: absolute;
+  top: -145px;
+  display: block;
+  height: 0;
+}  
+div#mw-head #left-navigation,
+div#mw-head #right-navigation .pull-left,
+div#mw-head #right-navigation #p-cactions {
+  display: none;
+}  
+
+div#mw-head #p-personal {
+	position: fixed;
+	/*bottom: -97px;*/
+	bottom: -109px;
+	/*right: 140px;*/
+	right: 82px;
+	display: block;
+	width: auto;
+}
+
+/* == NOTE: The Eng / Fr button only changed the language of GCpedia UI, NOT YOUR CONTENT. ==*/
+div#mw-head #right-navigation #p-views {
+  position: fixed;
+  /*bottom: -30px;*/
+  bottom: -40px;
+  display: block;
+  right: 20px;  
+} 
+div#mw-head #right-navigation #p-views ul {
+	background: #eee;
+    border: solid hsla(0, 0%, 96%, 0.5);
+    transition: 0.2s;	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+div#mw-head #p-personal ul {
+	transition: 0.2s;
+}
+
+div#mw-head #right-navigation #p-views ul::before {
+	color: white;
+	background: #222;
+	display: block;
+	float: right;
+	margin-bottom: 5px;
+	content: ' Views \A\A\A\A\A';
+	white-space: pre-wrap;
+	position: relative;
+	top: -30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: solid 1px #777;
+	padding: 0 5px;
+}
+div#mw-head #p-personal ul::before {
+	color: white;
+	background: #222;
+	display: block;
+	float: right;
+	margin-bottom: 5px;
+	content: ' Personal Tools \A\A\A\A';
+	white-space: pre-wrap;
+	position: relative;
+	top: -30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: solid 1px #777;
+	padding: 0 5px;
+}
+
+div#mw-head #right-navigation #p-views:hover {
+	bottom: 30px;
+	transition: 0.2s;	
+	z-index: 10000;
+}
+div#mw-head #p-personal:hover {
+	/*bottom: -35px;*/
+	bottom: -43px;
+	transition: 0.2s;
+}
+
+div#mw-head #right-navigation #p-views ul li,
+div#mw-head #p-personal ul li {
+	background-image: none;
+	background: #eee;
+	height: 30px;
+	text-align: center;
+}
+
+div#mw-head #right-navigation #p-views ul li#ca-ve-edit {
+	display: none;
+}
+
+div#mw-head #right-navigation #p-search #simpleSearch {
+	height: inherit;
+	position: fixed;
+	right: 16px;
+	top: 29px;
+}
+/*TO DO Have search show on very small devices, but results don't show very well on older template. Staying invisible for now.*/
+@media (max-width: 767px) {
+	div#mw-head #right-navigation #p-search {
+		display: none;
+	}
+}
+@media screen {
+	div#mw-head #right-navigation #p-search #simpleSearch #searchInput {
+		font-size: inherit;
+		padding: 0 0 0 5px;
+	}
+}
+@media screen {
+	div#mw-head #right-navigation #p-search #simpleSearch input {
+		background-color: none;
+	}
+}
+
+@media screen {
+div#simpleSearch #searchButton, div#simpleSearch #mw-searchButton {
+		background-color: #ccc;
+	}
+}
+
+
+.icon#ca-unfavorite a, .icon#ca-favorite a {
+    padding-top: 2.3em;
+}
+
+@media screen {
+	div.vectorTabs {
+		background-image: none;
+		background-image: none !ie;
+	}
+}
+@media screen {
+	div.vectorTabs span {
+		display: inherit;
+		background-image: none;
+		background-image: none !ie;
+	}
+}
+@media screen {
+	div.vectorTabs ul {
+		height: auto;
+	}
+}
+@media screen {
+	div.vectorTabs ul li {
+		line-height: 0;
+	}
+}
+@media screen {
+	#p-personal {
+		top: auto;
+		background: #eee;
+		border: solid hsla(0, 0%, 96%, 0.5);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+}
+@media screen {
+	#p-personal ul {
+		padding-left: 0;
+	}
+}
+@media screen {
+	#p-personal li {
+		font-size: 0.8em;
+		padding: 0 0.375em;
+	}
+}
+
+/*TO DO: Figure out a way to make GCpedia tools not sticky on the footer with small resolutions. For now, don't show as it's hard to edit a GCpedia page with such a small window.*/
+@media (max-width: 767px) {
+	div#mw-head #right-navigation #p-views {
+		display: none;
+	}
+}
+@media (max-width: 767px) {
+	div#mw-head #p-personal {
+		display: none;
+	}
+}
+
+/* === GCpedia Left Navigation content === */
+/* == Eng / Fr button (Used to flip the language of your CONTENT ==*/
+
+div#mw-panel {
+  position: absolute;
+  left: -9999px;
+  display: block;
+} 
+
+div#mw-panel #p-lang .interlanguage-link {
+	position: fixed;
+	top: -2px;
+	right: 17px;
+	display: block;
+	font-size: inherit;
+}
+
+@media (max-width: 767px) {
+	div#mw-panel #p-lang .interlanguage-link {
+		position: fixed;
+		/*top: -4px;*/
+		left: 0;
+		width: 95px;
+		height: 0px;
+	}
+}
+div#mw-panel #p-lang .interlanguage-link a {
+	color: #fff;
+	/*padding: 15px;*/
+	padding-left: 71px;
+	padding-right: 71px;
+	line-height: 2.1rem;
+	display: block;
+	/*background: #333;*/
+	/*border: solid 1px #aaa;*/
+	font-weight: bold;
+}
+@media (max-width: 767px) {
+	div#mw-panel #p-lang .interlanguage-link a {
+		line-height: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		display: inline;
+	}
+}		
+div#mw-panel #p-lang .interlanguage-link a::after {
+	/*content:'';
+	display:block;
+	width:0px;
+	height:2px;
+	background:#00d6fe;
+	transition: 0.2s;*/
+}
+div#mw-panel #p-lang .interlanguage-link a:hover::after {
+	/*width:100%;*/
+}
