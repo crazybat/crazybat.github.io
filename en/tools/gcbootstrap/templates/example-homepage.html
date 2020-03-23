@@ -435,7 +435,6 @@ ul.dropdown-menu {
 	transition: 0.2s;
 }
 
-
 .navbar-dark .navbar-nav .active > .nav-link, 
 .navbar-dark .navbar-nav .nav-link.active, 
 .navbar-dark .navbar-nav .nav-link.show, 
@@ -445,7 +444,8 @@ ul.dropdown-menu {
 	color:#a07dff;
 }
 .nav-item:hover::after,
-.nav-item.active::after {
+.nav-item .active
+.nav-item .active::after {
 	width:100%;
 	color: red;
 	font-weight: bold;
@@ -1066,7 +1066,7 @@ div#mw-panel #p-lang .interlanguage-link a:hover::after {
 					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/themes-eng">Themes</a>
 				</li>-->
 				<li class="nav-item">
-					 <a class="nav-link active" href="/en/tools/">Tools!</a>
+					 <a class="nav-link active" href="/en/tools/">Tools</a>
 				</li>
 				<li class="nav-item">
 					 <a class="nav-link" href="/en/about/">About</a>
