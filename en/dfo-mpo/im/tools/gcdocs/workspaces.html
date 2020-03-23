@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Hub - GCbootstrapX</title>
+	
+	<!--Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!--Bootstrap Font Awesome-->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+		
+	<!--Bootstrap JQuery-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<!--Bootstrap Popper-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<!--Bootstrap JS-->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+	<!--Modernizr for detecting HTML5 and CSS3 features in the browser-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+	
+	<!--Coil-->
+	<meta name="monetization" content="$pay.stronghold.co/1a1a85a0ffd71f54c6eb4563c18cfc274fd">
+	
+	<style>
+/* =====
+core.css
+Purpose: To extend the wonderful GCpedicure (by Chris - Global Affairs Canada's Innolab) by being able to utilize default Bootstrap's common look and feel and retain GCpedia's functionality.
+
+Author: Marco Battilana (marco.battilana@dfo-mpo.gc.ca) - Fisheries and Oceans Canada
+GCconnex: gcconnex.gc.ca/profile/crazybat
+Twitter: @crazybat
+
+Revision History: 
+****
+Version 1.0 
+(16 Oct 2018)
+- Using existing methodology of GCpedicure and having the added benefit of showing most of the default stylings of Bootstrap. You can now use Bootstrap framework directly - including almost all scripts, styles, etc. 
+
+Known Issues:
+- Need an easier way to add the Edit link (SOLVED! See override.css Version 1.0)
+- Incorporate existing GCpedia functionality: Language flipper, log in, etc. (SOLVED! See override.css Version 1.0)
+
+Version 1.1
+(31 Oct 2018)
+- Created override.css to bring back some of the default GCpedia functionality, language flipper, log in, etc.
+
+Known Issues: 
+- <multilang> does weird things to GCpedia include files. See if we can flip language using this. Otherwise, keep the built-in flipper for now.
+****
+
+References:
+GCpedicure: www.gcpedia.gc.ca/wiki/GCpedicure
+Bootstrap:	getbootstrap.com
+ */
+html {
+	position: relative;
+	min-height: 100%;
+	-ms-overflow-style: none;
+}
+
+html, body {
+	height: 100%;
+}	
+  
+body {
+overflow-y: hidden;
+background-color: #fff;
+/*min-height: 75rem;*/
+/*margin-top: 4.5rem;*/
+/*margin-bottom: 4.5rem;*/
+}
+
+/* ==== The main container style for GCbootstrap - DON'T CHANGE! ==== */
+.super-body {
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-x: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* moved from body as GCpedia renders it out */
+  /*min-height: 75rem;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;*/
+}  
+/* ==== The main container style for GCbootstrap - DON'T CHANGE! ==== */
+
+/* === GCbootstrap icon ===*/
+#icon-gcb {
+	position: absolute;
+	display: block;
+	/*bottom: 30px;*/
+	bottom: 22px;
+	right: 23px;
+	z-index: 10005;
+}
+
+/* ==== To override GCpedia styles. DO NOT REMOVE ==== */
+div#mw-head {
+  position: absolute;
+  top: 145px;
+  right: 0;
+  width: 100%;
+  display: none;
+}  
+div#mw-panel {
+  
+  position: absolute;
+  top: 160px;
+  padding-top: 1em;
+  width: 10em;
+  left: 0;
+  display: none;
+}  
+#footer {
+  display: none;
+}
+
+/* ==== To override GCpedia styles. DO NOT REMOVE ==== */
+
+/* === Globals: Building rows, column for proper spaces and shading, inheriting font sizes, visibility, etc. === */  
+
+/* == For debugging only! Puts boxes around all grid elements == */
+/*[class*="col-"] {
+padding-top: 1rem;
+padding-bottom: 1rem;
+background-color: rgba(86, 61, 124, .15);
+border: 1px solid rgba(86, 61, 124, .2);
+}*/
+
+/* == Content container that's NOT a header, nav, or footer == */
+div[role*="main"]
+{
+  margin-top: 5em;
+  margin-bottom: 4em;
+}
+
+@media screen {
+	ul {
+		list-style-image: inherit;
+		margin-left: 0;
+	}	
+}
+@media screen {
+	.mw-content-ltr ul, .mw-content-rtl .mw-content-ltr ul {
+	margin-top: 0;
+	}
+}
+@media screen {
+	.mw-content-ltr nav ul, .mw-content-rtl .mw-content-ltr nav ul {
+	margin-left: 0;
+	}
+}
+
+@media screen {
+	.mw-content-ltr ol, .mw-content-rtl .mw-content-ltr ol {
+	margin: inherit;
+	padding: inherit;
+	}
+}
+@media screen {
+	.mw-content-ltr nav ol, .mw-content-rtl .mw-content-ltr nav ol {
+	margin: inherit;
+	padding: inherit;
+	}
+}
+div[class*="container"] ul[class*="list-group"],
+div[class*="container"] ul[class*="nav"],
+div[class*="container"] ul[class*="pagination"] {
+	margin-left: 0;
+}
+
+input[type=checkbox],
+input[type=radio]
+{
+	margin-left: 0;
+	position: inherit;
+}
+
+.collapse,
+.collapse .show {
+  visibility: inherit;
+}
+
+.row {
+  margin-bottom: 1rem;
+} 
+
+.btn-primary {
+  background-color: #007bff !important;
+}
+.fade {
+  opacity: inherit;
+}
+
+.mw-body h1,
+.mw-body h2,
+.mw-body h3,
+.mw-body h4,
+.mw-body h5,
+.mw-body h6 {
+  font-family: inherit;
+  margin-bottom: .25em;
+  padding-bottom: 5px;
+  padding-top: inherit;
+  border-bottom: solid 1px transparent;
+}
+
+.mw-body-content {
+  font-size: inherit;
+}
+
+@media screen {
+.mw-body h1
+{
+	font-size: 2.5rem;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+@media screen {
+.mw-body h2
+{
+	font-size: 2rem;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+
+@media screen {
+.mw-body h3
+{
+	font-size: 1.75rem;
+	font-weight: inherit;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+
+@media screen {
+.mw-body h4
+{
+	font-size: 1.5rem;
+	font-weight: inherit;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+
+@media screen {
+.mw-body h5
+{
+	font-size: 1.25rem;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+
+@media screen {
+.mw-body h6
+{
+	font-size: 1rem;
+	line-height: 1.2;
+	margin-top: 0;
+}
+}
+.modal-backdrop {
+	z-index: -1;
+}
+
+/* == Main Navigation bar == */
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-default {
+  background-color: #fff;
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-brand {
+  color: #222;
+}
+
+.navbar-brand {
+	padding: 0;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-text {
+  color: #222;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #222;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #111;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav>.disabled>a,
+.navbar-default .navbar-nav>.disabled>a:hover,
+.navbar-default .navbar-nav>.disabled>a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ddd;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	  color: #777;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+	  color: #333;
+	  background-color: transparent;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+	  color: #555;
+	  background-color: #e7e7e7;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,
+  .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:focus {
+	  color: #ccc;
+	  background-color: transparent;
+  }
+}
+
+.navbar-default .navbar-link {
+  color: #777;
+}
+
+.navbar-default .navbar-link:hover {
+  color: #333;
+}
+
+.navbar-default .btn-link {
+  color: #777;
+}
+
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+  color: #333;
+}
+
+.navbar-default .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-default .btn-link:hover,
+.navbar-default .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-default .btn-link:focus {
+  color: #ccc;
+}
+
+.navbar-default .navbar-nav>li>a:visited {
+  color: #222;
+}
+
+ul.dropdown-menu {
+  padding: 0;
+}
+
+.dropdown-menu>li>a {
+  display: block;
+  padding: 15px 20px;
+  clear: both;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+  border-bottom: 1px solid #e8e8e8;
+}  
+
+/*= Pretty nav effects =*/
+.nav-item::after{
+	content:'';
+	display:block;
+	width:0px;
+	height:2px;
+	background:#a07dff;
+	transition: 0.2s;
+}
+.nav-item:hover::after {
+	width:100%;
+}
+.navbar-dark .navbar-nav .active > .nav-link, 
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link.show, 
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .nav-link:focus, 
+.navbar-dark .navbar-nav .nav-link:hover{
+	color:#a07dff;
+}
+.nav-link {
+	padding:15px 5px;
+	transition:0.2s;
+}
+.dropdown-item.active, 
+.dropdown-item:active {
+	color:#212529;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+	background:#a07dff;
+}
+
+
+/* == Cards, specific styles ==*/
+.card {
+	border: solid 1px #c8ced3;
+}
+.card-accent-primary {
+    border-top-color: #20a8d8;
+    border-top-width: 5px;  
+}
+.card-accent-secondary {
+    border-top-color: #c8ced3;
+    border-top-width: 5px;  
+}
+.card-accent-success {
+    border-top-color: #4dbd74;
+    border-top-width: 5px;  
+}
+.card-accent-danger {
+    border-top-color: #f86c6b;
+    border-top-width: 5px;  
+}
+.card-accent-warning {
+    border-top-color: #ffc107;
+    border-top-width: 5px;  
+}
+.card-accent-info {
+    border-top-color: #63c2de;
+    border-top-width: 5px;  
+}
+.card-accent-dark {
+    border-top-color: #2f353a;
+    border-top-width: 5px;  
+}
+  
+/* == Main Footer == */
+.footer a,
+.footer a:link,
+.footer a:visited
+{
+	color: #a07dff !important;
+}
+.footer a:focus,
+.footer a:hover,
+.footer a:active
+{
+	color: #e7e7e7 !important;
+	text-decoration: underline;
+}
+/* == Sticky bottom == */
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer */
+  line-height: 60px; /* Vertically center the text */
+  background-color: #333;
+  z-index: 10001;
+}
+
+@media (max-width: 767px) {
+	.fixed-bottom {
+	  position: relative;
+	  bottom: none;
+	  width: 100%;
+	  height: 60px; /* Set the fixed height of the footer */
+	  line-height: 60px; /* Vertically center the text */
+	  background-color: #333;
+	  z-index: 10001;
+	}
+}
+
+/* === Content-specific styles ===*/
+/* == Youtube Player styles == */
+
+.youtube-player {
+	position: relative;
+	padding-bottom: 56.23%;
+	/* Use 75% for 4:3 videos */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+	background: #000;
+	margin: 5px;
+}
+
+.youtube-player iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background: transparent;
+}
+
+.youtube-player img {
+	bottom: 0;
+	display: block;
+	left: 0;
+	margin: auto;
+	max-width: 100%;
+	width: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border: none;
+	height: auto;
+	cursor: pointer;
+	-webkit-transition: .4s all;
+	-moz-transition: .4s all;
+	transition: .4s all;
+}
+
+.youtube-player img:hover {
+	-webkit-filter: brightness(75%);
+}
+
+.youtube-player .play {
+	height: 72px;
+	width: 72px;
+	left: 50%;
+	top: 50%;
+	margin-left: -36px;
+	margin-top: -36px;
+	position: absolute;
+	background: url("http://www.gcpedia.gc.ca/gcwiki/images/e/ef/Play-button.png") no-repeat;
+	cursor: pointer;
+}
+
+/*== Gallery ==*/
+.thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+ 
+.caption {
+    position:absolute;
+    top:-100%;
+    right:0;
+    background: rgba(102, 75, 229, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.thumbnail:hover .caption {
+    top:0%;
+}
+
+/*== Personas ==*/
+.our-team-main
+{
+	width:100%;
+	height:auto;
+	border-top:5px #323233 solid;
+	background:#fff;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin-bottom:28px;
+}
+.our-team-main h3
+{
+	font-size:20px;
+	font-weight:700;
+}
+
+.our-team-main p
+{
+	margin-bottom:0;
+}
+
+.team-back
+{
+	width:100%;
+	height:auto;
+	position:absolute;
+	top:0;
+	left:0;
+	padding-right: 90px;
+	text-align:left;
+	background:#fff;
+	
+}
+.team-back img {
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+	filter: gray;
+}
+
+.team-front
+{
+	width:100%;
+	height:auto;
+	position:relative;
+	z-index:10;
+	background:#fff;
+	bottom:0px;
+	transition: all 0.5s ease;
+	text-align:left;
+}
+
+.our-team-main:hover .team-front
+{
+	bottom:-300px;
+	transition: all 0.5s ease;
+}
+
+.our-team-main:hover
+{
+	border-color:#777;
+	transition:0.5s;
+}
+
+/*== FAQs ==*/
+#accordian ul {
+    margin-left: 35px;
+}
+
+#accordion .card {
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 15px 0;
+}
+#accordion .card-header {
+    border-radius: 30px;
+    padding: 0;
+	background-color: none;
+	border-bottom: none;
+	border-top-color: #c8ced3;
+    border-top-width: 5px;  
+}
+#accordion h5 {
+	background: #fff;
+	margin-bottom: 0;
+	padding: 5px 15px 5px 0;
+}
+#accordion .card-title a {
+    background: #28a745 none repeat scroll 0 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    padding: 12px 20px 12px 60px;
+    position: relative;
+    transition: all 0.3s ease 0s;
+}
+#accordion .card-title a.collapsed {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #bbb;
+	border-top-color: #c8ced3;
+    border-top-width: 5px;  
+    color: #333;
+}
+#accordion .card-title a::after {
+    background: #28a745 none repeat scroll 0 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    color: #fff;
+    content: '\02C5';
+    height: 55px;
+    left: -1px;
+    line-height: 55px;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    transition: all 0.3s ease 0s;
+    width: 55px;
+}
+#accordion .card-title a.collapsed::after {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #bbb;
+	box-shadow: none;
+    color: #333;
+    content: '\003E';
+}
+#accordion .card-body {
+    background: transparent none repeat scroll 0 0;
+    border-top: medium none;
+    padding: 20px 0 10px 9px;
+    position: relative;
+	border: 1px solid #28a745;
+	margin-right: 15px;
+}
+  
+/* =====
+override.css
+Purpose: To override the initial core.css styles.
+
+Dependancy: 
+- core.css (runs first)
+-- override.css (runs second)
+
+Author: Marco Battilana (marco.battilana@dfo-mpo.gc.ca) - Fisheries and Oceans Canada
+Twitter: @crazybat
+
+Revision History: 
+****
+Version 1.0
+(26 Oct 2018)
+- Brought in existing GCpedia functionality for pages. Uses same links, just styled and displayed different.
+
+Known Issues:
+- Incorporate additional GCpedia functionality: Language flipper, log in, etc. (PARTIALLY SOLVED! Still need to bring over remaining GCpedia items)
+-- Search GCpedia
+-- Categories
+-- Others???
+****
+
+References:
+GCpedicure: www.gcpedia.gc.ca/wiki/GCpedicure
+Bootstrap:	getbootstrap.com
+ */
+ 
+/* ==== To override the initial override from core.css. DO NOT REMOVE ==== */
+
+/* === GCpedia Head content (Personal, GCpedia Tools) === */
+div#mw-head {
+  position: absolute;
+  top: -145px;
+  display: block;
+  height: 0;
+}  
+div#mw-head #left-navigation,
+div#mw-head #right-navigation .pull-left,
+div#mw-head #right-navigation #p-cactions {
+  display: none;
+}  
+
+div#mw-head #p-personal {
+	position: fixed;
+	/*bottom: -97px;*/
+	bottom: -109px;
+	/*right: 140px;*/
+	right: 82px;
+	display: block;
+	width: auto;
+}
+
+/* == NOTE: The Eng / Fr button only changed the language of GCpedia UI, NOT YOUR CONTENT. ==*/
+div#mw-head #right-navigation #p-views {
+  position: fixed;
+  /*bottom: -30px;*/
+  bottom: -40px;
+  display: block;
+  right: 20px;  
+} 
+div#mw-head #right-navigation #p-views ul {
+	background: #eee;
+    border: solid hsla(0, 0%, 96%, 0.5);
+    transition: 0.2s;	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+div#mw-head #p-personal ul {
+	transition: 0.2s;
+}
+
+div#mw-head #right-navigation #p-views ul::before {
+	color: white;
+	background: #222;
+	display: block;
+	float: right;
+	margin-bottom: 5px;
+	content: ' Views \A\A\A\A\A';
+	white-space: pre-wrap;
+	position: relative;
+	top: -30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: solid 1px #777;
+	padding: 0 5px;
+}
+div#mw-head #p-personal ul::before {
+	color: white;
+	background: #222;
+	display: block;
+	float: right;
+	margin-bottom: 5px;
+	content: ' Personal Tools \A\A\A\A';
+	white-space: pre-wrap;
+	position: relative;
+	top: -30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: solid 1px #777;
+	padding: 0 5px;
+}
+
+div#mw-head #right-navigation #p-views:hover {
+	bottom: 30px;
+	transition: 0.2s;	
+	z-index: 10000;
+}
+div#mw-head #p-personal:hover {
+	/*bottom: -35px;*/
+	bottom: -43px;
+	transition: 0.2s;
+}
+
+div#mw-head #right-navigation #p-views ul li,
+div#mw-head #p-personal ul li {
+	background-image: none;
+	background: #eee;
+	height: 30px;
+	text-align: center;
+}
+
+div#mw-head #right-navigation #p-views ul li#ca-ve-edit {
+	display: none;
+}
+
+div#mw-head #right-navigation #p-search #simpleSearch {
+	height: inherit;
+	position: fixed;
+	right: 16px;
+	top: 29px;
+}
+/*TO DO Have search show on very small devices, but results don't show very well on older template. Staying invisible for now.*/
+@media (max-width: 767px) {
+	div#mw-head #right-navigation #p-search {
+		display: none;
+	}
+}
+@media screen {
+	div#mw-head #right-navigation #p-search #simpleSearch #searchInput {
+		font-size: inherit;
+		padding: 0 0 0 5px;
+	}
+}
+@media screen {
+	div#mw-head #right-navigation #p-search #simpleSearch input {
+		background-color: none;
+	}
+}
+
+@media screen {
+div#simpleSearch #searchButton, div#simpleSearch #mw-searchButton {
+		background-color: #ccc;
+	}
+}
+
+
+.icon#ca-unfavorite a, .icon#ca-favorite a {
+    padding-top: 2.3em;
+}
+
+@media screen {
+	div.vectorTabs {
+		background-image: none;
+		background-image: none !ie;
+	}
+}
+@media screen {
+	div.vectorTabs span {
+		display: inherit;
+		background-image: none;
+		background-image: none !ie;
+	}
+}
+@media screen {
+	div.vectorTabs ul {
+		height: auto;
+	}
+}
+@media screen {
+	div.vectorTabs ul li {
+		line-height: 0;
+	}
+}
+@media screen {
+	#p-personal {
+		top: auto;
+		background: #eee;
+		border: solid hsla(0, 0%, 96%, 0.5);
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+}
+@media screen {
+	#p-personal ul {
+		padding-left: 0;
+	}
+}
+@media screen {
+	#p-personal li {
+		font-size: 0.8em;
+		padding: 0 0.375em;
+	}
+}
+
+/*TO DO: Figure out a way to make GCpedia tools not sticky on the footer with small resolutions. For now, don't show as it's hard to edit a GCpedia page with such a small window.*/
+@media (max-width: 767px) {
+	div#mw-head #right-navigation #p-views {
+		display: none;
+	}
+}
+@media (max-width: 767px) {
+	div#mw-head #p-personal {
+		display: none;
+	}
+}
+
+/* === GCpedia Left Navigation content === */
+/* == Eng / Fr button (Used to flip the language of your CONTENT ==*/
+
+div#mw-panel {
+  position: absolute;
+  left: -9999px;
+  display: block;
+} 
+
+div#mw-panel #p-lang .interlanguage-link {
+	position: fixed;
+	top: -2px;
+	right: 17px;
+	display: block;
+	font-size: inherit;
+}
+
+@media (max-width: 767px) {
+	div#mw-panel #p-lang .interlanguage-link {
+		position: fixed;
+		/*top: -4px;*/
+		left: 0;
+		width: 95px;
+		height: 0px;
+	}
+}
+div#mw-panel #p-lang .interlanguage-link a {
+	color: #fff;
+	/*padding: 15px;*/
+	padding-left: 71px;
+	padding-right: 71px;
+	line-height: 2.1rem;
+	display: block;
+	/*background: #333;*/
+	/*border: solid 1px #aaa;*/
+	font-weight: bold;
+}
+@media (max-width: 767px) {
+	div#mw-panel #p-lang .interlanguage-link a {
+		line-height: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		display: inline;
+	}
+}		
+div#mw-panel #p-lang .interlanguage-link a::after {
+	/*content:'';
+	display:block;
+	width:0px;
+	height:2px;
+	background:#00d6fe;
+	transition: 0.2s;*/
+}
+div#mw-panel #p-lang .interlanguage-link a:hover::after {
+	/*width:100%;*/
+}
+
+</style>
+	
+</head>
+
+<!--Start of body and super-body container. DO NOT REMOVE-->
+<body>
+	<main class="bd-masthead" id="content">
+	<section class="super-body"> 
+	<!--Start of body and super-body container. DO NOT REMOVE-->  
+
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		  <!--<a class="navbar-brand" href="#">GCpedia</a>-->
+			<a class="navbar-brand" href="http://crazybat.github.io/">
+				<!--<img src="http://www.gcpedia.gc.ca/gcwiki/images/c/c5/Logo-GCpedia%402x.svg" width="108" height="55" alt="GCpedia">-->
+				<img src="/img/GoC/global/icon-400x400.png" width="55" height="55" alt="GCb-X">
+			</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap">Home</a>
+				</li>
+				<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/start-eng">Get Started</a>
+				</li>
+				<!--<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/documentation-eng">Documentation</a>
+				</li>-->
+				<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/style-guide-eng">Style Guide</a>
+				</li>
+				<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/themes-eng">Themes</a>
+				</li>		
+				<li class="nav-item">
+					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/about-eng">About</a>
+				</li>
+			</ul>
+		  </div>
+		</nav>
+
+
+		<div role="main" class="container-fluid">
+	<nav aria-label="breadcrumb" class="mb-2">
+	  <ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)">Information Management</a></li>
+		<li class="breadcrumb-item"><a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives">Initiatives</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs"><span class="text-uppercase text-dark font-weight-bold">GC</span><span class="text-success">docs</span></a></li>
+		<li class="breadcrumb-item active" aria-current="page">Workspaces</li>
+	  </ol>
+	</nav>
+
+	<div class="row">
+		<div class="col-md-12">
+			<!--<h3>Workspaces</h3>
+			<img src="http://www.gcpedia.gc.ca/gcwiki/images/7/77/Logo-graphic.png" width="150" alt="" class="img-thumbnail img-fluid float-right mr-2">
+			<img src="http://www.gcpedia.gc.ca/gcwiki/images/5/55/Archive.png" class="float-left mr-2">
+			<div class="lead">
+				<p>GCdocs has 2 different workspaces for all users: My Personal Workspace and My Enterprise Workspace.</p>
+				<p>The following information will help guide you on the definitions, best-practices and methodologies for each workspace.</p>
+			</div>-->
+			
+			<h3><i class="fas fa-briefcase mr-1 text-danger"></i> My Personal Workspace</h3>
+			<img src="http://www.gcpedia.gc.ca/gcwiki/images/7/77/Logo-graphic.png" width="150" alt="" class="img-thumbnail img-fluid float-right mr-2">
+			<!--<img src="http://www.gcpedia.gc.ca/gcwiki/images/5/55/Archive.png" class="float-left mr-2">-->
+			<p>GCdocs allows for the migration of your <strong>personal-professional</strong> documents and e-mails to your Personal Workspace. Once your content has been migrated to GCdocs, you will always have access to your records when needed.</p>
+			<p>These video tutorials and presentations will show you the various methods for saving your items.</p>
+			
+		</div>
+	</div>
+	
+	<!--<div class="row">
+		<div class="col-md-12">
+			<h3>Questions to ask before migration</h3>
+		</div>
+	</div>
+	
+	<div class="card-deck mb-5">
+				
+		<div class="card card-accent-danger mb-3 shadow">
+			
+            <div class="card-header"><h5>Am I creating something of business value?</h5></div>
+            <div class="card-body">
+			 
+			   <img src="http://www.gcpedia.gc.ca/gcwiki/images/8/8f/Icon-guy-01.png" width="100" class="float-right img-fluid">
+			  
+				
+					<p class="center-block btn btn-danger btn-lg">No</p>
+					<p>This information should placed in <strong>My Personal Workspace</strong></p>
+				
+				
+					<p class="center-block btn btn-success btn-lg">Yes</p>
+					<p>This information should placed in <strong>My Enterprise Workspace</strong></p>
+				
+			  
+              
+            </div>
+        </div>
+	
+		<div class="card card-accent-danger mb-3 shadow">
+			
+            <div class="card-header"><h5>Which function does the document refer to?</h5></div>
+            <div class="card-body">
+              
+			  <img src="http://www.gcpedia.gc.ca/gcwiki/images/6/6a/Icon-guy-02.png" width="100" class="float-right img-fluid">
+			  
+				
+					<p class="center-block btn btn-danger btn-lg">Internal Services</p>
+					<p>Internal Services refers to the activities and resources of the 10 distinct service categories that support Program delivery in the organization, regardless of the Internal Services delivery model in a department.</p>
+				
+					<p class="center-block btn btn-success btn-lg">Programs</p>
+					<p>The program functions are related to the specific activities of each organization: these functions are directly related to the department’s mandate and to it's legal framework as well.</p>
+				
+              
+            </div>
+        </div>
+		
+		<div class="card card-accent-danger mb-3 shadow">
+			
+            <div class="card-header"><h5>Which activity am I conducting?</h5></div>
+            <div class="card-body">
+              
+			   <img src="http://www.gcpedia.gc.ca/gcwiki/images/c/c9/Icon-guy-03.png" width="100" class="float-right img-fluid">
+			  <p>The <strong>Function-Accountability File Plan</strong> reflects the processes and activities within which documents are created and evolve.</p>
+			  <p>The third question to ask is to identify the activity concerned  in its context and to locate the document in its process. It is a job that can be complex and involves judgment.</p>
+			  
+              
+            </div>
+        </div>		
+		<div class="card card-accent-danger mb-3 shadow">
+			
+            <div class="card-header"><h5>What type of content is it?</h5></div>
+            <div class="card-body">
+              
+			   <img src="http://www.gcpedia.gc.ca/gcwiki/images/3/3e/Icon-guy-04.png" width="100" class="float-right img-fluid">
+			  <p>When deciding on the type of document you have in hand, you should normally be able to judge whether you are classifying it in the right function or not.</p>
+			  <p>For example, it would be surprising to find a curriculum vitae in activities related to communications functions. A resume in this case should be in one of the HR-related activities.</p>
+			  
+              
+            </div>
+        </div>		
+	</div>-->
+	
+		
+	
+	<div class="row">
+		<!--<div class="col-lg-6 col-md-12 col-xs-12 border-right border-dark">-->
+		<div class="col-12">
+			<!--<h3>My Pesonal Workspace</h3>
+			<p>GCdocs allows for the migration of your <strong>personal-professional</strong> documents and e-mails to your Personal Workspace. Once your content has been migrated to GCdocs, you will always have access to your records when needed.</p>
+			<p>These video tutorials and presentations will show you the various methods for saving your items.</p>-->
+			
+			<h4><i class="fas fa-file-alt mr-1 text-danger"></i> Saving Documents</h4>
+			<ul><li> <a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs/Guide#saving">Save directly to a folder</a></li>
+			<li> <a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs/Guide#saving">Save using Drag and Drop</a></li>
+			<li> <a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs/Guide#saving">Add a version to an existing GCdocs document</a></li></ul>
+			
+			<h4 class="mt-3"><i class="fas fa-at mr-1 text-danger"></i> Saving E-mails</h4>
+			<ul><li> <a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs/Guide#saving">Send and Save directly from Outlook</a></li>
+			<li> <a href="http://www.gcpedia.gc.ca/wiki/Information_management_at_Fisheries_and_Oceans_Canada_(DFO)/Information_management_initiatives/GCDocs/Guide#saving">Save using Drag and Drop</a></li>
+			<li> <a href="/gcwiki/images/5/5b/201809_-_Outlook_-_Moving_whole_folders.pdf" class="internal" title="201809 - Outlook - Moving whole folders.pdf">Outlook: Moving whole folders (PowerPoint)</a></li></ul>
+			<p>NOTE: All personal-professional documents and e-mails are required to follow the <a href="https://gcdocs.gc.ca/dfo-mpo/llisapi.dll/Open/681776">Business Rules and Best Practices for GCdocs</a>.
+			</p>
+			
+			<div id="accordion" class="faq" aria-multiselectable="true">
+			  <div class="card">
+				<div class="card-header" id="heading01">
+				  <h5 class="card-title">
+					<a data-toggle="collapse" href="#collapse01" role="button" aria-expanded="true" aria-controls="collapse01" class="collapsed"> 
+					Business Rules
+					</a>
+				  </h5>
+				</div>
+
+				<div id="collapse01" class="collapse" aria-labelledby="heading01">
+				  <div class="card-body">
+					<ul><li> Each user will have a personal workspace in GCdocs. The personal workspace is intended to be used for managing documents of a personal-professional nature, and in accordance with <a href="http://intra.dfo-mpo.gc.ca/ss/documents/corp/policy/Acceptable_Use_of_Electronic_Networks_Policy.pdf">Policy on Acceptable Network and Device Use</a> and <a rel="nofollow" class="external text" href="http://www.gcpedia.gc.ca/gcwiki/images/9/99/Standard_on_the_Storage_of_Electronic_Information.DOCX">IM Standard for the Storage of Electronic Information</a>.</li>
+					<li> A user’s personal workspace will be setup as accessible only to the user and GCdocs Administrators but the user will retain control over access to their personal space.</li>
+					<li> Users must limit access to their personal workspace to every extent possible.  If a document in one’s personal workspace must be shared, there is likely a folder to share it within the enterprise workspace where access can be limited as required rather than permitting access to one’s personal workspace.</li>
+					<li> All information of business value must be stored within the enterprise workspace, even in draft form.  There are access controls available to document owners that allow them to limit access to their documents until they are prepared to share more broadly.</li>
+					<li> Users are responsible for utilizing their Personal Workspace responsibly.  Regular monitoring and reporting will be conducted on the size of Personal Workspaces and targeted document types (e.g. videos and photos).  Information Management Services may follow-up with employees, if required, to request that clean-up actions be performed.  </li>
+					<li> Remember, content remaining in a user’s personal workspace will be deleted 30 days following their departure from the Department - <a href="http://www.gcpedia.gc.ca/gcwiki/images/f/f5/IM_Standard_for_Departing_Employees.DOCX">IM Standard for Departing Employees</a>.</li></ul>
+					<p><em>Justification: As this space is not meant to store documents of business value, it will not be retained for future departmental use once the employee leaves the department.  Also, limiting access to one’s personal workspace, where at all possible, mitigates any risk that another employee may access any personal information contained therein.</em>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			</div>	
+			<div id="accordion" class="faq" aria-multiselectable="true">
+			  <div class="card">
+				<div class="card-header" id="heading02">
+				  <h5 class="card-title">
+					<a data-toggle="collapse" href="#collapse02" role="button" aria-expanded="true" aria-controls="collapse02" class="collapsed"> 
+					Best Practices
+					</a>
+				  </h5>
+				</div>
+
+				<div id="collapse02" class="collapse" aria-labelledby="heading02">
+				  <div class="card-body">
+				  
+					<ul>
+						<li> Users must not save information of business value in their personal workspace as it cannot be shared with colleagues and will be lost should the employee depart unexpectedly. The content should be deleted when the employee leaves the department. </li>
+						<li> Personal-professional items, such as an email referencing an employee’s performance agreement, resume, personal Human Resources files, etc. are examples of what may be kept in this area.</li>
+						<li> Users are encouraged to review the contents of their Personal Workspace regularly (every two years at a minimum) and perform clean-up actions to maintain an organized Personal Workspace environment.  </li>
+					</ul>
+					<p><i>Justification: Information of business value must be accessible to other employees requiring it for their duties and be accessible for Access to Information and Privacy (act) searches.  Regularly deleting information that is no longer useful will help maintain respectable electronic storage levels for the department.</i>
+					</p>
+					<hr/>
+					<ul>
+						<li><a href="https://gcdocs.gc.ca/dfo-mpo/llisapi.dll/Open/681776">GCdocs Business Rules and Best Practices</a></li>
+					</ul>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		
+		<!--<div class="col-lg-6 col-md-12 col-xs-12">			
+			<h3>My Enterprise Workspace</h3>
+			<p>GCdocs stores <strong>all corporate information</strong> and is organized according to the business activity that it relates to. With this, the folder structure is a hybrid of a <strong>Functional-Accountability File Plan</strong>.</p> 
+			<p>The Functional-Accountability File Plan, in relation to the high-level GCdocs folder structure, looks and works like this:</p>
+			
+			<div class="row mb-0">
+				<div class="col-12">
+					<p class="center-block"><a class="btn btn-primary btn-lg btn-block" data-toggle="collapse" href="#collapseLvl1" role="button" aria-expanded="false" aria-controls="collapseLvl1">Level 1<br/>By Function</a></p>
+					<div class="collapse mt-2" id="collapseLvl1">
+						<p><span class="badge badge-primary">Level 1 – By Function</span><br/>Collaboration between contributors, references and reusing of information and assignment of retention schedules.</p>
+						<p>Folder are in <span class="text-uppercase">uppercase</span>.</p>
+						
+						<div id="accordion" class="faq" aria-multiselectable="true">
+						  <div class="card">
+							<div class="card-header" id="heading03">
+							  <h5 class="card-title">
+								<a data-toggle="collapse" href="#collapse03" role="button" aria-expanded="true" aria-controls="collapse03" class="collapsed"> 
+								Overview of Functions
+								</a>
+							  </h5>
+							</div>
+							<div id="collapse03" class="collapse" aria-labelledby="heading03">
+							  <div class="card-body">
+								<ul>
+									<li>Business Unit Management and Coordination</li>
+									<li>Governance Committees (external and internal)</li>
+									<li>Grants and Contributions</li>
+									<li>Policy Development (reserved for mandated programs)</li>
+									<li>Program Management</li>
+									<li>Project Management</li>
+									<li>Regulatory Compliance and Enforcement (reserved for mandated programs)</li>
+									<li>Regulatory Development (reserved for mandated programs)</li>
+									<li>Strategic Governance and Oversight</li>
+								</ul>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<div class="row m-0">
+				<div class="col-12 text-center">
+					<span class="badge badge-dark font-weight-bold">?</span>
+				</div>
+			</div>
+			<div class="row mb-0">
+				<div class="col-12">
+					<p class="center-block"><a class="btn btn-warning btn-lg btn-block" data-toggle="collapse" href="#collapseLvl2" role="button" aria-expanded="false" aria-controls="collapseLvl2">Level 2<br/>By Programs</a></p>
+					<div class="collapse mt-2" id="collapseLvl2">
+						<p><span class="badge badge-warning">Level 2 – By Programs</span><br/>Specific DFO, Canadian Coast Guard and Internal Services Programs.</p>
+						<p>Folders are in <span class="text-uppercase">uppercase</span>.</p>
+						
+						<div id="accordion" class="faq" aria-multiselectable="true">
+						  <div class="card">
+							<div class="card-header" id="heading04">
+							  <h5 class="card-title">
+								<a data-toggle="collapse" href="#collapse04" role="button" aria-expanded="true" aria-controls="collapse04" class="collapsed"> 
+								Overview of Programs
+								</a>
+							  </h5>
+							</div>
+
+							<div id="collapse04" class="collapse" aria-labelledby="heading04">
+							  <div class="card-body">
+								<ul>
+									<li>Canadian Coast Guard Programs</li>
+									<li>Fisheries and Oceans Programs</li>
+									<li>Internal Services Programs</li>
+								</ul>
+
+								<h6>Exceptions:</h6>
+								<ul>
+									<li>Governance Committees – divided by internal and external, and listed by name</li>
+									<li>Business Unit Management and Coordination – listed by organization</li>
+								</ul>
+
+							  </div>
+							</div>
+						  </div>
+						</div>						
+					</div>
+				</div>
+			</div>
+			<div class="row m-0">
+				<div class="col-12 text-center">
+					<span class="badge badge-dark font-weight-bold">?</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<p class="center-block"><a class="btn btn-success btn-lg btn-block" data-toggle="collapse" href="#collapseLvl3" role="button" aria-expanded="false" aria-controls="collapseLvl3">Level 3+<br/>By Activities</a></p>
+					<div class="collapse mt-2" id="collapseLvl3">
+						<p><span class="badge badge-success">Level 3+ - By Activities</span><br/>The work that is done within each respective program.</p>
+						<p>Folder can be in either Proper Case or <span class="text-uppercase">uppercase</span>, depending on the subfolders present.</p>
+						
+						<div id="accordion" class="faq" aria-multiselectable="true">
+						  <div class="card">
+							<div class="card-header" id="heading05">
+							  <h5 class="card-title">
+								<a data-toggle="collapse" href="#collapse05" role="button" aria-expanded="true" aria-controls="collapse05" class="collapsed"> 
+								Overview of Activities
+								</a>
+							  </h5>
+							</div>
+
+							<div id="collapse05" class="collapse" aria-labelledby="heading05">
+							  <div class="card-body">
+								<ul>
+								<li>Coast Guard (Collection)
+									<ul>
+									<li>Fleet Maintenance (program)</li>
+									<li>Shore-based Asset Readiness (program)</li>
+									</ul>
+								</li>
+								<li>Fisheries and Oceans (Collection)
+									<ul>
+									<li>Species at Risk (program)</li>
+									<li>Aquaculture Management (program)</li>
+									</ul>
+								</li>
+								<li>Internal Services (Collection)
+									<ul>
+									<li>Human Resource Management (Program)</li>
+									<li>Real Property Management (Program)</li>
+									</ul>
+								</li>
+								</ul>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>For more details, please refer to the <a href="https://gcdocs.gc.ca/dfo-mpo/llisapi.dll/Open/1865114">Overview of Function-based Folder Structure for GCdocs</a> (PowerPoint)</p>
+		</div>-->
+	</div>	
+</div>
+		
+	
+
+		<footer class="footer fixed-bottom">
+			<div class="container-fluid">
+				<span class="text-white">Contact Information: <a href="mailto:marco@crazybat.ca" class="text-info"><i class="fa fa-envelope"></i> Marco Battilana</a></span>
+			</div>
+			<div id="icon-gcb">
+				<a href="http://www.gcpedia.gc.ca/wiki/GCbootstrap"><span class="rounded text-white badge" style="background: #563D7C;">Powered by <strong>GC</strong>bootstrap</span></a>
+			</div>
+		</footer>	
+		
+<!--End of body and super-body container. DO NOT REMOVE-->
+    </section>
+	</main>
+	<script>
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip({
+			container: 'body'
+		  })
+		})
+
+		$(function () {
+		  $('[data-toggle="popover"]').popover({
+			container: 'body'
+		  })
+		})
+	</script>	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-389608-6"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-389608-6');
+	</script>	
+</body>
