@@ -449,9 +449,11 @@ ul.dropdown-menu {
 	padding:15px 5px;
 	transition:0.2s;
 }
-.nav-item .nav-link.active::before {
-	content: '>';
+.nav-item .nav-link.active {
 	font-weight: bold;
+}
+.nav-item .nav-link.active::before {
+	content:' \25C6';
 }
 .dropdown-item.active, 
 .dropdown-item:active {
