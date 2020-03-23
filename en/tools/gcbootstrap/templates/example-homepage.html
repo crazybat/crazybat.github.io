@@ -434,10 +434,7 @@ ul.dropdown-menu {
 	background:#a07dff;
 	transition: 0.2s;
 }
-.nav-item:hover::after,
-.nav-item:active::after {
-	width:100%;
-}
+
 
 .navbar-dark .navbar-nav .active > .nav-link, 
 .navbar-dark .navbar-nav .nav-link.active, 
@@ -447,10 +444,13 @@ ul.dropdown-menu {
 .navbar-dark .navbar-nav .nav-link:hover{
 	color:#a07dff;
 }
-.nav-item.active,
-.nav-item:active {
+.nav-item:hover::after,
+.nav-item.active::after {
+	width:100%;
+	color: red;
 	font-weight: bold;
 }
+
 .nav-link {
 	padding:15px 5px;
 	transition:0.2s;
@@ -1066,7 +1066,7 @@ div#mw-panel #p-lang .interlanguage-link a:hover::after {
 					 <a class="nav-link" href="http://www.gcpedia.gc.ca/wiki/GCbootstrap/themes-eng">Themes</a>
 				</li>-->
 				<li class="nav-item">
-					 <a class="nav-link active" href="/en/tools/">Tools</a>
+					 <a class="nav-link active" href="/en/tools/">Tools!</a>
 				</li>
 				<li class="nav-item">
 					 <a class="nav-link" href="/en/about/">About</a>
@@ -1079,7 +1079,7 @@ div#mw-panel #p-lang .interlanguage-link a:hover::after {
 		<div role="main" class="container-fluid">
 	<nav aria-label="breadcrumb" class="mb-2">
 	  <ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i><span class="d-none">Home</span></a></li>
+		<li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i> Home</a></li>
 		<li class="breadcrumb-item"><a href="/en/tools/">Tools</a></li>
 		<li class="breadcrumb-item"><a href="/en/tools/gcbootstrap">GCbootstrap</a></li>
 		<li class="breadcrumb-item"><a href="/en/tools/gcbootstrap/templates/">Templates</a></li>
