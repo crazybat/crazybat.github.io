@@ -759,7 +759,7 @@ Thank you to @amandabernardo for creating this content! ==*/
 	#slack h3 {
 		font-size: 1.5rem;
 	}
-	#slack p, ul {
+	#slack p, #slack ul {
 		font-size: 1.25rem;
 }
 }
@@ -771,7 +771,7 @@ Thank you to @amandabernardo for creating this content! ==*/
 	font-size: 3rem;
 	font-family: 'Bebas Neue', cursive;
 }
-#slack p, ul {
+#slack p, #slack ul {
 	font-size: 1.75rem;
 }
 #slack .bg-00 {
