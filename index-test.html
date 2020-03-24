@@ -30,26 +30,6 @@
 	<link type="text/css" href="/css/core.css" rel="stylesheet">
 	<link type="text/css" href="/css/override.css" rel="stylesheet">
 	
-	<!--Data table sorting-->
-	<script>
-	$(document).ready(function () {
-	$('#dt-tools').DataTable();
-	$('.dataTables_length').addClass('bs-select');
-	});
-	</script>
-	<script>
-		$(function () {
-		  $('[data-toggle="tooltip"]').tooltip({
-			container: 'body'
-		  })
-		})
-
-		$(function () {
-		  $('[data-toggle="popover"]').popover({
-			container: 'body'
-		  })
-		})
-	</script>	
 </head>
 
 <!--Start of body and super-body container. DO NOT REMOVE-->
@@ -121,7 +101,7 @@
 				<div class="col-md-6">
 					<h4>Table 1</h4>
 					
-					<table class="table table-bordered table-hover table-sm" id="dt-tools">
+					<table class="table table-bordered table-hover table-sm">
 						<thead class="thead-dark">
 						<tr>
 							<th scope="col">Table Header</th>
@@ -129,18 +109,16 @@
 						</tr>
 						</thead>
 						<tbody>
-						
 						<tr>
-							<td>ccc</td>
-							<td>123</td>
+							<th colspan="2">Subheader (2 columns)</th>
 						</tr>
 						<tr>
-							<td>bbb</td>
-							<td>456</td>
+							<td>Content</td>
+							<td>Content</td>
 						</tr>
 						<tr>
-							<td>aaa</td>
-							<td>456</td>
+							<td>Content</td>
+							<td>Content</td>
 						</tr>
 						</tbody>
 					</table>			
@@ -259,6 +237,19 @@
 <!--End of body and super-body container. DO NOT REMOVE-->
     </section>
 	</main>
+	<script>
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip({
+			container: 'body'
+		  })
+		})
+
+		$(function () {
+		  $('[data-toggle="popover"]').popover({
+			container: 'body'
+		  })
+		})
+	</script>	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-389608-6"></script>
 	<script>
