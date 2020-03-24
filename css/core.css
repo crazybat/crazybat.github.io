@@ -722,3 +722,80 @@ ul.dropdown-menu {
 	border: 1px solid #28a745;
 	margin-right: 15px;
 }
+/*== Special Page: Slack GoC 
+Thank you to @amandabernardo for creating this content! ==*/
+
+#slack {
+	/*font-family: 'Bebas Neue', cursive;*/
+	font-family: 'Roboto', sans-serif;
+	box-shadow: 5px 5px grey;
+	border-top: solid 1px #ccc;
+	border-left: solid 1px #ccc;
+}
+
+@media (max-width: 576px) {
+	#slack {
+		box-shadow: none;
+		border: 0;
+	}
+}
+
+#slack h1 {
+	font-size: 8.0rem;
+	font-family: 'Bebas Neue', cursive;
+}
+@media (max-width: 992px) {
+	#slack h1 {
+		font-size: 7.0rem;
+	}
+}	
+@media (max-width: 576px) {
+	#slack h1 {
+		font-size: 5.0rem;
+	}
+	#slack h2 {
+		font-size: 2rem;
+	}
+	#slack h3 {
+		font-size: 1.5rem;
+	}
+	#slack p, ul {
+		font-size: 1.25rem;
+}
+}
+#slack h2 {
+	font-size: 3.5rem;
+	font-family: 'Bebas Neue', cursive;
+}
+#slack h3 {
+	font-size: 3rem;
+	font-family: 'Bebas Neue', cursive;
+}
+#slack p, ul {
+	font-size: 1.75rem;
+}
+#slack .bg-00 {
+	background: #fff;
+	background-image: url("https://crazybat.github.io/img/GoC/slack/icon-slack.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+
+@media (max-width: 992px) {
+	#slack .bg-00 {
+		background-image: none;
+	}
+}	
+
+#slack .bg-01 {
+	background: #7ECEA9;
+}
+#slack .bg-02 {
+	background: #FCD790;
+}
+#slack .bg-03 {
+	background: #83D8ED;
+}
+#slack .bg-04 {
+	background: #EA7494;
+}
