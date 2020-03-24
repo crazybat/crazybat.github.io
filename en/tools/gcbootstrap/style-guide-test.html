@@ -20,6 +20,12 @@
 	<link type="text/css" href="/css/core.css" rel="stylesheet">
 	<link type="text/css" href="/css/override.css" rel="stylesheet">
 	
+	<script>
+	$(document).ready(function() {
+		$('#data-table').DataTable();
+	} );	
+	</script>
+	
 </head>
 
 <!--Start of body and super-body container. DO NOT REMOVE-->
@@ -95,7 +101,7 @@
 				<div class="col-md-6">
 					<h4>Table 1!</h4>
 					
-					<table class="table table-bordered table-hover table-sm">
+					<table class="table table-bordered table-hover table-sm" id="data-table">
 						<thead class="thead-dark">
 						<tr>
 							<th scope="col" data-field="id">Column 1</th>
