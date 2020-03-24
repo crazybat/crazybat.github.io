@@ -20,12 +20,6 @@
 	<link type="text/css" href="/css/core.css" rel="stylesheet">
 	<link type="text/css" href="/css/override.css" rel="stylesheet">
 	
-	<script>
-	$(document).ready(function() {
-		$('#data-table').DataTable();
-	} );	
-	</script>
-	
 </head>
 
 <!--Start of body and super-body container. DO NOT REMOVE-->
@@ -99,7 +93,7 @@
 					<h3><i class="fas fa-briefcase mr-1 text-dark"></i> Tools</h3>
 				</div>
 				<div class="col-md-6">
-					<h4>Table 1</h4>
+					<h4>Table 1!</h4>
 					
 					<table class="table table-bordered table-hover table-sm" id="data-table">
 						<thead class="thead-dark">
@@ -1621,6 +1615,11 @@
 		$(function () {
 		  $('[data-toggle="popover"]').popover()
 		})
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('#data-table').DataTable();
+		} );	
 	</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-389608-6"></script>
