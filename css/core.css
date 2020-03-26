@@ -558,6 +558,17 @@ ul.dropdown-menu {
 	}
 }
 
+.fixed-bottom-mini {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px !important;
+	line-height: 30px !important;
+	background-color: #333;
+}
+.fixed-bottom-mini  #icon-gcb {
+	bottom: 0px !important;
+}
 
 /* === Content-specific styles ===*/
 /* == Youtube Player styles == */
