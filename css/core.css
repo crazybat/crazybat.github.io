@@ -558,11 +558,11 @@ ul.dropdown-menu {
 	}
 }
 
-footer.footer.fixed-bottom.footer-mini {
+footer .footer .fixed-bottom .footer-mini {
 	height: 30px;
 	line-height: 30px;
 }
-footer.footer.fixed-bottom.footer-mini  #icon-gcb {
+footer .footer .fixed-bottom .footer-mini  #icon-gcb {
 	bottom: 0px;
 }
 
