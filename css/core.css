@@ -76,12 +76,12 @@ background-color: #fff;
 	right: 23px;
 	z-index: 10005;
 }
-.footer-mini .fixed-bottom {
+footer .footer-mini {
 	height: 30px;
 	line-height: 30px;
 }
-.footer-mini  #icon-gcb {
-	bottom: 0;
+footer .footer-mini  #icon-gcb {
+	bottom: -22px;
 }
 
 /* ==== To override GCpedia styles. DO NOT REMOVE ==== */
