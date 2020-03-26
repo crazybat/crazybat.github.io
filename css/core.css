@@ -561,9 +561,11 @@ ul.dropdown-menu {
 footer .footer .fixed-bottom .footer-mini {
 	height: 30px !important;
 	line-height: 30px !important;
+	background-color: none !important;
 }
 footer .footer .fixed-bottom .footer-mini  #icon-gcb {
 	bottom: 0px !important;
+	border: solid 1px red;
 }
 
 /* === Content-specific styles ===*/
