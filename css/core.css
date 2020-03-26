@@ -856,3 +856,35 @@ Thank you to @amandabernardo for creating this content! ==*/
 #slack .bg-04 {
 	background: #EA7494;
 }
+
+/*== Special Page: SSC - Audio Conference Guide 
+Thank you to @ssc_ca for creating this content! ==*/
+#ssc-gts header div {
+	height: 8rem;
+	background: #25364a url('/img/GoC/sites/ssc-spc/resources/bg-header.png') bottom right no-repeat;
+	border-radius: 0 0 50px 0;
+}
+@media (max-width: 992px) {
+	#ssc-gts header div h1 {
+		font-size: 2.0rem;
+	}
+	#ssc-gts header div h2 {
+		font-size: 1.5rem;
+	}
+}
+@media (max-width: 576px) {
+	#ssc-gts header div {
+		color: #000;
+		background: #fff;
+		background-image: none;
+		height: auto;
+	}
+	#ssc-gts header div h1,
+	#ssc-gts header div h2	{
+		color: #000 !important;
+		padding-left: 0 !important;
+	}
+	#ssc-gts-features {
+		border-left: 0 !important;
+	}
+}
