@@ -568,6 +568,7 @@ ul.dropdown-menu {
 }
 .fixed-bottom-mini  #icon-gcb {
 	bottom: 0px !important;
+	right: 5px;
 }
 
 /* === Content-specific styles ===*/
