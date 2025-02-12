@@ -163,14 +163,14 @@ div#simpleSearch #searchButton, div#simpleSearch #mw-searchButton {
 @media screen {
 	div.vectorTabs {
 		background-image: none;
-		background-image: none !ie;
+		background-image: none !important;
 	}
 }
 @media screen {
 	div.vectorTabs span {
 		display: inherit;
 		background-image: none;
-		background-image: none !ie;
+		background-image: none !important;
 	}
 }
 @media screen {
